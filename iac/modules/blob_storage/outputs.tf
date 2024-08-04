@@ -3,5 +3,5 @@ output "storage_account_id" {
 }
 
 output "blob_container_id" {
-  value = azurerm_storage_container.this.id
+  value = azurerm_storage_container.default.id
 }
