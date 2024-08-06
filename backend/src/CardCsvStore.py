@@ -2,10 +2,10 @@ import csv
 from datetime import datetime, timedelta as td
 from typing import List
 from Card import Card
-from persistence_interface import PersistenceInterface
+from backend.src.CardManagerInterface import CardManagerInterface
 import base64
 
-class CardCsvStore(PersistenceInterface):
+class CardCsvStore(CardManagerInterface):
     def __init__(self, filename='cards.csv'):
         self.filename = filename
         self.cards = []

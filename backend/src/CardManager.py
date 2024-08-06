@@ -1,10 +1,10 @@
 from typing import List
 from Card import Card
-from persistence_interface import PersistenceInterface
+from backend.src.CardManagerInterface import CardManagerInterface
 from datetime import timezone, datetime
 
 class CardManager:
-    def __init__(self, persistence: PersistenceInterface):
+    def __init__(self, persistence: CardManagerInterface):
         self.persistence = persistence
         self.cards = {card.key: card for card in self.persistence.load_cards()}
 

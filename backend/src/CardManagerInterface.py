@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 from typing import List
 from Card import Card
 
-class PersistenceInterface(ABC):
+class CardManagerInterface(ABC):
     @abstractmethod
     def save_cards(self, cards: List[Card]) -> None:
         pass

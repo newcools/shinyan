@@ -1,0 +1,11 @@
+{
+    "azure": {
+      "storage_account_name": "your_storage_account",
+      "storage_account_key": "your_storage_account_key",
+      "container_name": "your_container"
+    },
+    "blob": {
+      "blob_name": "card-files",
+      "file_path": "./assets/cards.csv"
+    }
+  }
