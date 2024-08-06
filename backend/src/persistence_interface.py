@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from typing import List
-from card import Card
+from Card import Card
 
 class PersistenceInterface(ABC):
     @abstractmethod

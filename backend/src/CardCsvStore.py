@@ -1,19 +1,23 @@
 import csv
 from datetime import datetime, timedelta as td
 from typing import List
-from card import Card
+from Card import Card
 from persistence_interface import PersistenceInterface
+import base64
 
 class CardCsvStore(PersistenceInterface):
     def __init__(self, filename='cards.csv'):
         self.filename = filename
+        self.cards = []
+        self.load_cards()
 
-    def save_cards(self, cards: List[Card]) -> None:
+    def save_cards(self) -> None:
         with open(self.filename, 'w', newline='') as file:
             writer = csv.writer(file)
-            for card in cards:
+            for card in self.cards:
                 writer.writerow([
                     card.key,
+                    CardCsvStore._encode_to_base64(card.name),
                     card.status,
                     card.interval.total_seconds() if card.interval else None,
                     card.ease,
@@ -21,48 +25,61 @@ class CardCsvStore(PersistenceInterface):
                     card.timestamp.isoformat()
                 ])
 
-    def load_cards(self) -> List[Card]:
-        cards = []
+    def load_cards(self):
         try:
             with open(self.filename, 'r', newline='') as file:
                 reader = csv.reader(file)
-                for row in reader:
+                for row in reader:                    
                     key = row[0]
-                    interval = td(seconds=float(row[2])) if row[2] else None
-                    timestamp = datetime.fromisoformat(row[5])
-                    cards.append(Card(
-                        key=key,
-                        status=row[1],
-                        interval=interval,
-                        ease=float(row[3]),
-                        step=int(row[4]),
-                        timestamp=timestamp
-                    ))
+                    name = CardCsvStore._decode_from_base64(row[1])
+                    status = row[2]
+                    interval = td(seconds=float(row[3])) if row[3] else None
+                    ease = float(row[4])
+                    step=int(row[5])
+                    timestamp = datetime.fromisoformat(row[6])
+                    self.cards.append(Card(name, key, status, interval, ease, step, timestamp))
         except FileNotFoundError:
             pass
-        return cards
 
     def add_card(self, card: Card) -> None:
-        cards = self.load_cards()
-        cards.append(card)
-        self.save_cards(cards)
+        self.cards.append(card)
 
     def get_card(self, key: str) -> Card:
-        cards = self.load_cards()
-        for card in cards:
+        for card in self.cards:
             if card.key == key:
                 return card
         return None
 
     def update_card(self, card: Card) -> None:
-        cards = self.load_cards()
-        for i, existing_card in enumerate(cards):
+        for i, existing_card in enumerate(self.cards):
             if existing_card.key == card.key:
-                cards[i] = card
+                self.cards[i] = card
                 break
-        self.save_cards(cards)
 
     def delete_card(self, key: str) -> None:
         cards = self.load_cards()
         cards = [card for card in cards if card.key != key]
-        self.save_cards(cards)
+
+    @staticmethod
+    def _encode_to_base64(input_string: str) -> str:
+        try:
+            # Ensure the string is in a consistent Unicode format
+            if isinstance(input_string, str):
+                # If the input is already a string, encode it to bytes using UTF-8
+                byte_data = input_string.encode('utf-8')
+            else:
+                # If the input is not a string, try converting it to a string
+                byte_data = str(input_string).encode('utf-8')
+    
+            # Encode the bytes using base64
+            base64_encoded = base64.b64encode(byte_data)
+            # Convert the base64 bytes back to a string
+            return base64_encoded.decode('utf-8')
+        except Exception as e:
+            print(f"Error encoding to base64: {e}")
+            return None
+    
+    @staticmethod
+    def _decode_from_base64(base64_string: str) -> str:
+        decoded_bytes = base64.b64decode(base64_string)
+        return decoded_bytes.decode('utf-8')

@@ -1,5 +1,5 @@
 from typing import List
-from card import Card
+from Card import Card
 from persistence_interface import PersistenceInterface
 from datetime import timezone, datetime
 
@@ -32,3 +32,6 @@ class CardManager:
         if key in self.cards:
             self.cards[key].timestamp = datetime.now(timezone.utc)
             self.persistence.save_cards(list(self.cards.values()))
+
+    def next_card(self) -> None:
+        return list(self.cards.values())[0]
