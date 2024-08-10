@@ -2,44 +2,49 @@ import csv
 from datetime import datetime, timedelta as td
 from typing import List
 from Card import Card
-from backend.src.CardManagerInterface import CardManagerInterface
+from CardManagerInterface import CardManagerInterface
 import base64
+from SyncInterface import SyncInterface
+import io
 
 class CardCsvStore(CardManagerInterface):
-    def __init__(self, filename='cards.csv'):
-        self.filename = filename
+    def __init__(self, sync: SyncInterface, source: str, destination: str):
+        self.sync = sync
+        self.source = source
+        self.destination = destination
         self.cards = []
-        self.load_cards()
+        all_cards = self.load_cards()
+        self.cards = {card.name: card for card in all_cards}
 
     def save_cards(self) -> None:
-        with open(self.filename, 'w', newline='') as file:
-            writer = csv.writer(file)
-            for card in self.cards:
-                writer.writerow([
-                    card.key,
-                    CardCsvStore._encode_to_base64(card.name),
-                    card.status,
-                    card.interval.total_seconds() if card.interval else None,
-                    card.ease,
-                    card.step,
-                    card.timestamp.isoformat()
-                ])
+        output = io.StringIO()
+        writer = csv.writer(output)
+        for card in self.cards:
+            writer.writerow([
+                card.key,
+                CardCsvStore._encode_to_base64(card.name),
+                card.status,
+                card.interval.total_seconds() if card.interval else None,
+                card.ease,
+                card.step,
+                card.timestamp.isoformat()
+            ])
+        self.sync.Push(self.destination, output.getvalue(), overwrite=True)
 
-    def load_cards(self):
-        try:
-            with open(self.filename, 'r', newline='') as file:
-                reader = csv.reader(file)
-                for row in reader:                    
-                    key = row[0]
-                    name = CardCsvStore._decode_from_base64(row[1])
-                    status = row[2]
-                    interval = td(seconds=float(row[3])) if row[3] else None
-                    ease = float(row[4])
-                    step=int(row[5])
-                    timestamp = datetime.fromisoformat(row[6])
-                    self.cards.append(Card(name, key, status, interval, ease, step, timestamp))
-        except FileNotFoundError:
-            pass
+    def load_cards(self):                    
+        data = self.sync.Pull(self.source)
+        content = data.decode()
+        csv_reader = csv.reader(io.StringIO(content))        
+        for row in csv_reader:
+            key = row[0]
+            name = CardCsvStore._decode_from_base64(row[1])
+            status = row[2]
+            interval = td(seconds=float(row[3])) if row[3] else None
+            ease = float(row[4])
+            step=int(row[5])
+            timestamp = datetime.fromisoformat(row[6])
+            self.cards.append(Card(name, key, status, interval, ease, step, timestamp))
+
 
     def add_card(self, card: Card) -> None:
         self.cards.append(card)

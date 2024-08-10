@@ -6,7 +6,6 @@ from SyncInterface import SyncInterface
 class AzureBlobSync(SyncInterface):
     def __init__(self, settings: Settings):
         self.storage_account_name = settings.storage_account_name
-        self.storage_account_key = settings.storage_account_key.get_secret_value()
         self.container_name = settings.container_name
         self.account_url = f"https://{settings.storage_account_name}.blob.core.windows.net"
         self.credential = DefaultAzureCredential()

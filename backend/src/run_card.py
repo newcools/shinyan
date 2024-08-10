@@ -1,33 +1,12 @@
 from CardCsvStore import CardCsvStore
-from card import Card
-from datetime import datetime, timedelta as td
-if __name__ == "__main__":
-    store = CardCsvStore()
+from AzureBlobSync import AzureBlobSync
+from Settings import load_settings_from_json
 
-    # Adding a new card
-    new_card = Card(status="learning", interval=td(minutes=10), ease=2.0, step=1)
-    store.add_card(new_card)
+settings = load_settings_from_json('./config.json')
+azure_blob_sync = AzureBlobSync(settings)
+manager = CardCsvStore(azure_blob_sync, 'cards.csv', 'cards.csv')
 
-    # Retrieving a card
-    card = store.get_card(0)
-    print(card)
+from Card import Card
+from datetime import datetime, timezone
 
-    # Updating the timestamp of the card when it is reviewed
-    store.update_timestamp(0)
-
-    # Retrieving the card again to see the updated timestamp
-    card = store.get_card(0)
-    print(card)
-
-    # Updating a card's status
-    if card:
-        card.status = "reviewing"
-        store.update_card(0, card)
-
-    # Deleting a card
-    store.delete_card(0)
-
-    # Retrieving all cards
-    cards = store.get_all_cards()
-    for card in cards:
-        print(card)
+allCards = manager.get_all_cards()
