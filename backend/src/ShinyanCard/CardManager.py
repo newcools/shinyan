@@ -1,11 +1,11 @@
 from typing import List
 from Card import Card
 from datetime import timezone, datetime
-from CardManagerInterface import CardManagerInterface
+from CardManagerInterface import CardStorageInterface
 from SyncInterface import SyncInterface
 
-class CardManager(CardManagerInterface):
-    def __init__(self, sync: SyncInterface, source: str, destination: str):
+class CardManager():
+    def __init__(self, sync: CardStorageInterface, source: str, destination: str):
         self.sync = sync
         self.source = source
         self.destination = destination

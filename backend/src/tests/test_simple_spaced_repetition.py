@@ -1,9 +1,6 @@
-import unittest
 from datetime import timedelta
-
-from card import Card
-
-LEARNING, REVIEWING, RELEARNING = "learning", "reviewing", "relearning"
+from ShinyanCard.Card import Card
+from ShinyanCard import CardStatus
 
 _minutes = lambda m: timedelta(minutes=m)
 _days = lambda d: timedelta(days=d)
@@ -26,17 +23,17 @@ HARD_INTERVAL = 1.2
 EASY_INTERVAL_BONUS = 1.5
 
 
-class TestSimpleSpacedRepetition(unittest.TestCase):
+class TestSimpleSpacedRepetition:
     def test_new_card(self):
-        card = Card()
-        assert card.status == LEARNING
+        card = Card("test")
+        assert card.status == CardStatus.LEARNING
         assert card.step == 0
         assert card.interval is None
         assert card.ease == INITIAL_EASE
 
     def test_learning_step_0(self):
-        card = Card()
-        check_values(card, "status", LEARNING, LEARNING, LEARNING, REVIEWING)
+        card = Card("test")
+        check_values(card, "status", CardStatus.LEARNING, CardStatus.LEARNING, CardStatus.LEARNING, CardStatus.REVIEWING)
         check_values(card, "step", 0, 1, 1, 0)
         check_values(card, "ease", INITIAL_EASE, INITIAL_EASE, INITIAL_EASE, 2.5)
         check_values(
@@ -49,8 +46,8 @@ class TestSimpleSpacedRepetition(unittest.TestCase):
         )
 
     def test_learning_step_1(self):
-        card = Card(step=1)
-        check_values(card, "status", LEARNING, LEARNING, REVIEWING, REVIEWING)
+        card = Card(name="test", step=1)
+        check_values(card, "status", CardStatus.LEARNING, CardStatus.LEARNING, CardStatus.REVIEWING, CardStatus.REVIEWING)
         check_values(card, "step", 0, 1, 0, 0)
         check_values(
             card,
@@ -63,8 +60,8 @@ class TestSimpleSpacedRepetition(unittest.TestCase):
         check_values(card, "interval", _minutes(1), _minutes(6), _days(1), _days(4))
 
     def check_reviewing(self, ease, interval):
-        card = Card(status=REVIEWING, ease=ease, interval=interval, step=None)
-        check_values(card, "status", RELEARNING, REVIEWING, REVIEWING, REVIEWING)
+        card = Card(name="test", status=CardStatus.REVIEWING, ease=ease, interval=interval, step=None)
+        check_values(card, "status", CardStatus.RELEARNING, CardStatus.REVIEWING, CardStatus.REVIEWING, CardStatus.REVIEWING)
         check_values(card, "step", 0, 0, 0, 0)
         check_values(
             card,
@@ -92,12 +89,8 @@ class TestSimpleSpacedRepetition(unittest.TestCase):
                 self.check_reviewing(ease, _days(interval))
 
     def test_relearning(self):
-        card = Card(status=RELEARNING, ease=3.0, step=0)
-        check_values(card, "status", RELEARNING, RELEARNING, REVIEWING, REVIEWING)
+        card = Card(name="test", status=CardStatus.RELEARNING, ease=3.0, step=0)
+        check_values(card, "status", CardStatus.RELEARNING, CardStatus.RELEARNING, CardStatus.REVIEWING, CardStatus.REVIEWING)
         check_values(card, "step", 0, 0, 0, 0)
         check_values(card, "ease", 3.0, 3.0, 3.0, 3.0)
         check_values(card, "interval", _minutes(1), _minutes(6), _days(1), _days(4))
-
-
-if __name__ == "__main__":
-    unittest.main()

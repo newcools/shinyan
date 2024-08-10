@@ -1,5 +1,5 @@
-import CardCsvStore
-from Card import Card
+from ShinyanCard import CardCsvStore
+from backend.src.ShinyanCard.Card import Card
 from datetime import datetime, timedelta as td
 import os
 

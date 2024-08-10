@@ -1,25 +1,24 @@
 import csv
 from datetime import datetime, timedelta as td
-from typing import List
+from typing import Dict
 from Card import Card
-from CardManagerInterface import CardManagerInterface
+from CardManagerInterface import CardStorageInterface
 import base64
 from SyncInterface import SyncInterface
 import io
 
-class CardCsvStore(CardManagerInterface):
+class CardCsvStore(CardStorageInterface):
     def __init__(self, sync: SyncInterface, source: str, destination: str):
         self.sync = sync
         self.source = source
         self.destination = destination
-        self.cards = []
-        all_cards = self.load_cards()
-        self.cards = {card.name: card for card in all_cards}
+        self.cards = {}
+        self.load_cards()
 
     def save_cards(self) -> None:
         output = io.StringIO()
         writer = csv.writer(output)
-        for card in self.cards:
+        for card in self.cards.values():
             writer.writerow([
                 card.key,
                 CardCsvStore._encode_to_base64(card.name),
@@ -31,7 +30,7 @@ class CardCsvStore(CardManagerInterface):
             ])
         self.sync.Push(self.destination, output.getvalue(), overwrite=True)
 
-    def load_cards(self):                    
+    def load_cards(self) -> None:                    
         data = self.sync.Pull(self.source)
         content = data.decode()
         csv_reader = csv.reader(io.StringIO(content))        
@@ -41,44 +40,29 @@ class CardCsvStore(CardManagerInterface):
             status = row[2]
             interval = td(seconds=float(row[3])) if row[3] else None
             ease = float(row[4])
-            step=int(row[5])
+            step = int(row[5])
             timestamp = datetime.fromisoformat(row[6])
-            self.cards.append(Card(name, key, status, interval, ease, step, timestamp))
-
+            self.cards[name] = Card(name, key, status, interval, ease, step, timestamp)
 
     def add_card(self, card: Card) -> None:
-        self.cards.append(card)
+        self.cards[card.name] = card
 
-    def get_card(self, key: str) -> Card:
-        for card in self.cards:
-            if card.key == key:
-                return card
-        return None
+    def get_card(self, name: str) -> Card:
+        return self.cards.get(name)
 
     def update_card(self, card: Card) -> None:
-        for i, existing_card in enumerate(self.cards):
-            if existing_card.key == card.key:
-                self.cards[i] = card
-                break
+        if card.name in self.cards:
+            self.cards[card.name] = card
 
-    def delete_card(self, key: str) -> None:
-        cards = self.load_cards()
-        cards = [card for card in cards if card.key != key]
+    def delete_card(self, name: str) -> None:
+        if name in self.cards:
+            del self.cards[name]
 
     @staticmethod
     def _encode_to_base64(input_string: str) -> str:
         try:
-            # Ensure the string is in a consistent Unicode format
-            if isinstance(input_string, str):
-                # If the input is already a string, encode it to bytes using UTF-8
-                byte_data = input_string.encode('utf-8')
-            else:
-                # If the input is not a string, try converting it to a string
-                byte_data = str(input_string).encode('utf-8')
-    
-            # Encode the bytes using base64
+            byte_data = input_string.encode('utf-8')
             base64_encoded = base64.b64encode(byte_data)
-            # Convert the base64 bytes back to a string
             return base64_encoded.decode('utf-8')
         except Exception as e:
             print(f"Error encoding to base64: {e}")
