@@ -1,10 +1,10 @@
 from abc import ABC, abstractmethod
 from typing import List
-from Card import Card
+from .Card import Card
 
 class CardStorageInterface(ABC):
     @abstractmethod
-    def save_cards(self, cards: List[Card]) -> None:
+    def save_cards(self) -> None:
         pass
 
     @abstractmethod
@@ -25,4 +25,9 @@ class CardStorageInterface(ABC):
 
     @abstractmethod
     def delete_card(self, key: str) -> None:
+        pass
+
+    @property
+    @abstractmethod
+    def cards(self):
         pass

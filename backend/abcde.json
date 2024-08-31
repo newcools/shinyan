@@ -1,0 +1,29 @@
+{
+  "sentences": [
+    {
+      "Japanese": "このラーメンは本当に美味しいです。",
+      "Hiragana": "このらーめんはほんとうにおいしいです。",
+      "English": "This ramen is really delicious."
+    },
+    {
+      "Japanese": "デザートのケーキはとても美味しいと思います。",
+      "Hiragana": "でざーとのけーきはとてもおいしいとおもいます。",
+      "English": "I think the dessert cake is very delicious."
+    },
+    {
+      "Japanese": "友達と一緒に食べたピザは美味しかったです。",
+      "Hiragana": "ともだちといっしょにたべたぴざはおいしかったです。",
+      "English": "The pizza I ate with my friend was delicious."
+    },
+    {
+      "Japanese": "このスープは体に良くて美味しいです。",
+      "Hiragana": "このすーぷはからだによくておいしいです。",
+      "English": "This soup is good for the body and delicious."
+    },
+    {
+      "Japanese": "新しいレストランの料理は本当に美味しいです。",
+      "Hiragana": "あたらしいれすとらんのりょうりはほんとうにおいしいです。",
+      "English": "The food at the new restaurant is really delicious."
+    }
+  ]
+}

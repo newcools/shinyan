@@ -127,4 +127,8 @@ docs/pages/versions/*/react-native/*.diff
 !crsqlite.xcframework
 
 # iOS
+<<<<<<< Updated upstream
 **/ios/.xcode.env.local
+=======
+**/ios/.xcode.env.local
+>>>>>>> Stashed changes

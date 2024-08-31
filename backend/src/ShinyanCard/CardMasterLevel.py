@@ -1,5 +1,6 @@
 from enum import Enum
 
+
 class CardMasterLevel(Enum):
     AGAIN = 0
     HARD = 1
