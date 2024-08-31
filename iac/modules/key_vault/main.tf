@@ -64,3 +64,9 @@ resource "azurerm_key_vault" "this" {
     ]
   }
 }
+
+resource "azurerm_key_vault_secret" "openai_api_key" {
+  name         = "openapi-api-key"
+  value        = var.openai_api_key
+  key_vault_id = azurerm_key_vault.this.id
+}

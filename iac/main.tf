@@ -10,7 +10,7 @@ module "key_vault" {
   location            = module.resource_group.location
   tenant_id           = data.azurerm_client_config.shinyan.tenant_id
   object_id           = data.azurerm_client_config.shinyan.object_id
-
+  openai_api_key      = var.openai_api_key
 }
 
 module "app_configuration" {
@@ -25,7 +25,7 @@ module "app_configuration_key_vault" {
   app_configuration_id = module.app_configuration.app_configuration_id
   
   keys_map = {
-    "open_ai:api_key" = module.key_vault.vault_uri
+    "open_ai__api_key" = module.key_vault.openai_api_key_id
   }
 }
 

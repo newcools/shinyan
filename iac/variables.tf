@@ -15,3 +15,9 @@ variable "storage_account_name" {
   type        = string
   default     = "shinyastorage"
 }
+
+variable "openai_api_key" {
+  description = "The value of the OpenAI API key."
+  type        = string
+  sensitive   = true
+}

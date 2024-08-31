@@ -7,3 +7,9 @@ variable "location" {
   description = "Azure location where the App Configuration will be created"
   type        = string
 }
+
+variable "sku" {
+  description = "price tier of the app configuration"
+  type        = string
+  default     = "free"
+}
