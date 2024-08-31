@@ -20,14 +20,14 @@ module "app_configuration" {
   sku                 = "free"  # free tier for the moment
 }
 
-module "app_configuration_key" {
+module "app_configuration_key_vault" {
   source               = "./modules/app_configuration_key"
   app_configuration_id = module.app_configuration.app_configuration_id
-  key_name             = "LinkedKeyVault"
-  key                  = "LinkedKeyVault"
-  value                = module.key_vault.vault_uri
+  
+  keys_map = {
+    "open_ai:api_key" = module.key_vault.vault_uri
+  }
 }
-
 
 module "blob_storage" {
   source              = "./modules/blob_storage"

@@ -1,19 +1,9 @@
-variable "key_name" {
-  description = "The name of the App Configuration key."
-  type        = string
+variable "keys_map" {
+  description = "A map of keys and their corresponding Key Vault secret URIs to be stored in the App Configuration."
+  type        = map(string)
 }
 
 variable "app_configuration_id" {
   description = "The ID of the App Configuration instance."
-  type        = string
-}
-
-variable "key" {
-  description = "The key name to be created in App Configuration."
-  type        = string
-}
-
-variable "value" {
-  description = "The value of the key in App Configuration (in this case, the Key Vault URI)."
   type        = string
 }
