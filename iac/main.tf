@@ -10,6 +10,7 @@ module "key_vault" {
   location            = module.resource_group.location
   tenant_id           = data.azurerm_client_config.shinyan.tenant_id
   object_id           = data.azurerm_client_config.shinyan.object_id
+
 }
 
 module "app_configuration" {
@@ -18,6 +19,15 @@ module "app_configuration" {
   location            = module.resource_group.location
   sku                 = "free"  # free tier for the moment
 }
+
+module "app_configuration_key" {
+  source               = "./modules/app_configuration_key"
+  app_configuration_id = module.app_configuration.app_configuration_id
+  key_name             = "LinkedKeyVault"
+  key                  = "LinkedKeyVault"
+  value                = module.key_vault.vault_uri
+}
+
 
 module "blob_storage" {
   source              = "./modules/blob_storage"
