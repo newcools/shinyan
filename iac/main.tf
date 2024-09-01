@@ -16,6 +16,7 @@ module "key_vault" {
 module "app_configuration" {
   source              = "./modules/app_configuration"
   resource_group_name = module.resource_group.resource_group_name
+  resource_group_id   = module.resource_group.resource_group_id
   location            = module.resource_group.location
   sku                 = "free"  # free tier for the moment
 }
@@ -25,7 +26,7 @@ module "app_configuration_key_vault" {
   app_configuration_id = module.app_configuration.app_configuration_id
   
   keys_map = {
-    "open_ai__api_key" = module.key_vault.openai_api_key_id
+    "open_ai__api_key" = module.key_vault.openai_api_key_uri
   }
 }
 

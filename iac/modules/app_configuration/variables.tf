@@ -3,6 +3,11 @@ variable "resource_group_name" {
   type        = string
 }
 
+variable "resource_group_id" {
+  description = "Id of the resource group"
+  type        = string
+}
+
 variable "location" {
   description = "Azure location where the App Configuration will be created"
   type        = string
