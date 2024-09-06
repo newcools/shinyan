@@ -16,7 +16,6 @@ module "app_configuration" {
   source              = "./modules/app_configuration"
   resource_group_name = module.resource_group.resource_group_name
   location            = module.resource_group.location
-  sku                 = "free"  # free tier for the moment
 }
 
 module "blob_storage" {

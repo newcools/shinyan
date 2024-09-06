@@ -1,6 +1,6 @@
 from src.ShinyanCard.ContentGeneration.ContentGenerator import generate_contents
 
 
-class generate_contents_test:
+class TestGenerateContents:
     def test_generate_content(self):
-        generate_contents("test", "chinese")
+        generate_contents("より", "japanese")
