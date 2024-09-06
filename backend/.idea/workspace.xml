@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cd790ca1-6df1-43a2-8472-3e362460fffd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/test_contents_serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShinyanCard/CardContent.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShinyanCard/CardContents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShinyanCard/CardManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShinyanCard/CardManager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShinyanCard/ContentGeneration/ContentGenerator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShinyanCard/ContentGeneration/ContentGenerator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShinyanCard/ContentGeneration/speech_generator.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShinyanCard/ContentGeneration/speech_generator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ShinyanCard/Settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ShinyanCard/Settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/config.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/run_card.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/run_card.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/generatre_contents_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_generatre_contents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_card_manager.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_card_manager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iac/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/../iac/main.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../iac/modules/app_configuration/main.tf" beforeDir="false" afterPath="$PROJECT_DIR$/../iac/modules/app_configuration/main.tf" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;newcools&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/newcools/shinyan.git&quot;,
+    &quot;accountId&quot;: &quot;c7f8244a-321a-4b24-89fb-3a77c7fdc006&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2kRpP3yq12qf6rGKfPUIJQJ34oq" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for test_card_manager.TestCardManager.test_next_card_resource.executor": "Debug",
+    "Python tests.Python tests for test_contents_serializer.HelloTest.test_xxx.executor": "Run",
+    "Python tests.Python tests for test_contents_serializer.TestContentsSerializer.executor": "Run",
+    "Python tests.Python tests for test_generatre_contents.TestGenerateContents.test_generate_content.executor": "Debug",
+    "Python tests.Python tests in test_generatre_contents.py.executor": "Debug",
+    "Python tests.Python tests in test_simple_spaced_repetition.py.executor": "Run",
+    "Python tests.pytest for ShinyanCard.tests.test_card_manager.TestCardManager.executor": "Run",
+    "Python tests.pytest for ShinyanCard.tests.test_card_manager.TestCardManager.test_next_card.executor": "Debug",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.executor": "Run",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_card_run.executor": "Run",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_card_run_0.executor": "Debug",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_card_run_00.executor": "Debug",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_card_run_04.executor": "Debug",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_card_run_08.executor": "Debug",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_card_run_1.executor": "Debug",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_card_run_3.executor": "Debug",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_card_run_4.executor": "Debug",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_learning_step_0.executor": "Run",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_learning_step_1.executor": "Run",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_new_card.executor": "Run",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_relearning.executor": "Run",
+    "Python tests.pytest for ShinyanCard.tests.test_simple_spaced_repetition.TestSimpleSpacedRepetition.test_reviewing.executor": "Run",
+    "Python tests.pytest for test_simple_spaced_repetition.TestSimpleSpacedRepetition.executor": "Run",
+    "Python tests.pytest for tests.test_simple_spaced_repetition.executor": "Run",
+    "Python tests.pytest in test_card_manager.py.executor": "Run",
+    "Python tests.pytest in test_contents_serializer.py.executor": "Run",
+    "Python tests.pytest in test_simple_spaced_repetition.py.executor": "Run",
+    "Python.Card.executor": "Run",
+    "Python.CardContents.executor": "Debug",
+    "Python.CardCsvStore.executor": "Debug",
+    "Python.CardManager.executor": "Debug",
+    "Python.ContentGenerator.executor": "Debug",
+    "Python.OpenAiLanguageContentProvider.executor": "Run",
+    "Python.Settings.executor": "Debug",
+    "Python.contents_serializer_test.executor": "Run",
+    "Python.generatre_contents_test.executor": "Run",
+    "Python.main.executor": "Debug",
+    "Python.run_card.executor": "Debug",
+    "Python.test.executor": "Run",
+    "Python.typing.executor": "Debug",
+    "Python.word_learning_json.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "b45baae7",
+    "last_opened_file_path": "C:/Users/newco/source/repos/Shinyan/backend/tests",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyIntegratedToolsModulesConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\tests" />
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\src" />
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\src\ShinyanCard" />
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\src\ShinyanCard\tests" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\tests\test_data" />
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\tests" />
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\src\ShinyanCard" />
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\src\ShinyanCard\ContentGeneration" />
+      <recent name="C:\Users\newco\source\repos\Shinyan\backend\src\ShinyanCard\AzureServices" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Python tests for test_card_manager.TestCardManager.test_next_card_resource" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_card_manager.TestCardManager.test_next_card_resource&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_contents_serializer.TestContentsSerializer" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_contents_serializer.TestContentsSerializer&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for test_generatre_contents.TestGenerateContents.test_generate_content" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;test_generatre_contents.TestGenerateContents.test_generate_content&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests in test_generatre_contents.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_generatre_contents.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in test_contents_serializer.py" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/test_contents_serializer.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest in tests" type="tests" factoryName="py.test" nameIsGenerated="true">
+      <module name="backend" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python tests.pytest in tests" />
+      <item itemvalue="Python tests.Python tests for test_card_manager.TestCardManager.test_next_card_resource" />
+      <item itemvalue="Python tests.Python tests for test_contents_serializer.TestContentsSerializer" />
+      <item itemvalue="Python tests.Python tests for test_generatre_contents.TestGenerateContents.test_generate_content" />
+      <item itemvalue="Python tests.Python tests in test_generatre_contents.py" />
+      <item itemvalue="Python tests.pytest in test_contents_serializer.py" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.Python tests for test_card_manager.TestCardManager.test_next_card_resource" />
+        <item itemvalue="Python tests.Python tests in test_generatre_contents.py" />
+        <item itemvalue="Python tests.Python tests for test_generatre_contents.TestGenerateContents.test_generate_content" />
+        <item itemvalue="Python tests.pytest in test_contents_serializer.py" />
+        <item itemvalue="Python tests.Python tests for test_contents_serializer.TestContentsSerializer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-8336bb23522e-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.19072.16" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="cd790ca1-6df1-43a2-8472-3e362460fffd" name="Changes" comment="" />
+      <created>1723256216234</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1723256216234</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/ShinyanCard/CardManager.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/test_card_manager.py</url>
+          <line>47</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/test_card_manager.py</url>
+          <line>46</line>
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/ShinyanCard/CardManager.py</url>
+          <line>50</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <watches-manager>
+      <configuration name="PythonConfigurationType">
+        <watch expression="selected_content['Japanese']" />
+      </configuration>
+    </watches-manager>
+  </component>
+</project>
