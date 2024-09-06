@@ -18,7 +18,6 @@ module "app_configuration" {
   resource_group_name = module.resource_group.resource_group_name
   resource_group_id   = module.resource_group.resource_group_id
   location            = module.resource_group.location
-  sku                 = "free"  # free tier for the moment
 }
 
 module "app_configuration_key_vault" {

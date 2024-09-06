@@ -1,9 +1,10 @@
 import io
 from openai import OpenAI
+from ..Settings import settings
 
 
-def generate_speech(api_key: str, text: str) -> io.BytesIO:
-    client = OpenAI(api_key=api_key)
+def generate_speech(text: str) -> io.BytesIO:
+    client = OpenAI(api_key=settings.openai.api_key)
 
     with client.audio.speech.with_streaming_response.create(
             model="tts-1",

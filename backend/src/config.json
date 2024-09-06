@@ -2,8 +2,5 @@
     "blob": {
       "storage_account_name": "shinyastorage",
       "container_name": "shinyan-files"
-    },
-    "open_ai": {
-      "api_key": "openai-api-key"
     }
 }
