@@ -44,5 +44,5 @@ class TestCardManager:
         card_store = CardCsvStore(azure_blob_sync, 'cards.csv', 'cards.csv')
         card_manager = CardManager(card_store, azure_blob_sync)
 
-        current_resource = card_manager.next_card_resource()
+        current_resource = card_manager.next_card_content()
         abc =current_resource.uri

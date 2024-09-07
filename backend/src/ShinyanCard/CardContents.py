@@ -1,6 +1,7 @@
 import json
 from dataclasses import asdict, dataclass, field
-from typing import List
+from datetime import datetime
+from typing import List, Optional
 from enum import Enum
 
 # Enum and Data Classes
@@ -10,61 +11,81 @@ class ContentType(Enum):
     IMAGE = "image"
     TEXT = "text"
 
+
 @dataclass
 class ContentItemResource:
     type: ContentType
     uri: str
-    extra: object
+    extra: Optional[object] = None
 
 @dataclass
-class ContentItem:
-    value: str
-    extra: object
+class BaseContentItem:
+    text: Optional[str] = None
+    translation: Optional[str] = None
+    extra: Optional[object] = None
     resources: List[ContentItemResource] = field(default_factory=list)
 
 @dataclass
 class CardContents:
-    name: str
-    key: str
-    contents: List[ContentItem] = field(default_factory=list)
+    name: Optional[str] = None
+    key: Optional[str] = None
+    contents: List[BaseContentItem] = field(default_factory=list)
 
+@dataclass
+class JapaneseContentItem(BaseContentItem):
+    hiragana: Optional[str] = None
 
-class CustomJSONEncoder(json.JSONEncoder):
+@dataclass
+class MandarinContentItem(BaseContentItem):
+    pinyin: Optional[str] = None
+
+class CustomEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Enum):
             return obj.value
-        if hasattr(obj, '__dict__'):
-            return asdict(obj)
+        if isinstance(obj, (ContentItemResource, BaseContentItem, CardContents, JapaneseContentItem, MandarinContentItem)):
+            return obj.__dict__
+        if isinstance(obj, datetime):
+            return obj.isoformat()
         return super().default(obj)
 
 
-def deserialize_card_contents(json_data: dict) -> CardContents:
-    def content_type_decoder(content_type_str):
-        return ContentType(content_type_str)
+def custom_decoder(dct):
+    if 'type' in dct and isinstance(dct['type'], str):
+        dct['type'] = ContentType(dct['type'])  # Convert to ContentType Enum if present
 
-    def content_item_resource_decoder(resource_data):
+    if 'hiragana' in dct:  # JapaneseContentItem
+        return JapaneseContentItem(
+            text=dct.get('text'),
+            translation=dct.get('translation'),
+            extra=dct.get('extra'),
+            resources=[custom_decoder(res) for res in dct.get('resources', [])],
+            hiragana=dct.get('hiragana')
+        )
+    elif 'pinyin' in dct:  # MandarinContentItem
+        return MandarinContentItem(
+            text=dct.get('text'),
+            translation=dct.get('translation'),
+            extra=dct.get('extra'),
+            resources=[custom_decoder(res) for res in dct.get('resources', [])],
+            pinyin=dct.get('pinyin')
+        )
+    elif 'uri' in dct:  # ContentItemResource
         return ContentItemResource(
-            type=content_type_decoder(resource_data['type']),
-            uri=resource_data['uri'],
-            extra=resource_data.get('extra', None)
+            type=dct.get('type'),
+            uri=dct.get('uri'),
+            extra=dct.get('extra')
         )
-
-    def content_item_decoder(content_data):
-        return ContentItem(
-            value=content_data.get('value', None),
-            extra=content_data.get('extra', None),
-            resources=[content_item_resource_decoder(res) for res in content_data.get('resources', [])]
+    elif 'contents' in dct:
+        return CardContents(
+            name=dct.get('name'),
+            key=dct.get('key'),
+            contents=[custom_decoder(item) for item in dct.get('contents', [])]
         )
-
-    name = json_data.get('name', None)
-    key = json_data.get('key', None)
-    contents = [content_item_decoder(item) for item in json_data.get('contents', [])]
-
-    return CardContents(
-        name=name,
-        key=key,
-        contents=contents
-    )
-
-def serialize_card_contents(card_contents: CardContents) -> str:
-    return json.dumps(asdict(card_contents), cls=CustomJSONEncoder)
+    else:  # BaseContentItem
+        return BaseContentItem(
+            text=dct.get('text'),
+            translation=dct.get('translation'),
+            extra=dct.get('extra'),
+            resources=[custom_decoder(res) for res in dct.get('resources', [])]
+        )

@@ -1,30 +1,29 @@
 import json
-from langchain_openai import ChatOpenAI
-from langchain_core.prompts import PromptTemplate
 
-from .. import CardContents
-from ..CardContents import deserialize_card_contents
+from langchain_core.prompts import PromptTemplate
+from langchain_openai import ChatOpenAI
+
 from ..Settings import settings
 
 
-def prompt_for_japanese(word):
-    return """
+def prompt_for_japanese(word, translation="english"):
+    return f"""
         Please give me a few simple example sentences of the Japanese word {word}
-        and use the most commonly used words. Also, add the hiragana next to each sentence plus its English translation.
+        and use the most commonly used words. Also, add the hiragana next to each sentence plus its {translation} translation.
         The sentence must be complete and not overly simple, with at least 10 words.
-        Please provide the response in a JSON format which has a list of objects that have 3 properties, 
-        Japanese, Hiragana, and English, which is the translation.
+        Please provide the response in a JSON format which has a list of objects that have 3 properties using camel case, 
+        text(japanese), hiragana, and translation ({translation}).
         The list must be under a root called 'contents'.
     """
 
 
-def prompt_for_chinese(word):
-    return """
+def prompt_for_chinese(word, translation="english"):
+    return f"""
         Please give me a few simple example sentences of the Chinese word {word}
-        and use the most commonly used words. Also, add the pin yin next to each sentence plus its English translation.
+        and use the most commonly used words. Also, add the pin yin next to each sentence plus its {translation} translation.
         The sentence must be complete and not overly simple, with at least 10 words.
-        Please provide the response in a JSON format which has a list of objects that have 3 properties, 
-        Chinese, Pin Ying, and English, which is the translation.
+        Please provide the response in a JSON format which has a list of objects that have 3 properties using camel case,
+        text(chinese), pinyin, and translation ({translation}), which is the translation.
         The list must be under a root called 'contents'.
     """
 

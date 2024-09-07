@@ -1,4 +1,5 @@
 import json
+import os
 
 from src.ShinyanCard.CardContents import CardContents, ContentItem, ContentItemResource, ContentType, \
     serialize_card_contents, deserialize_card_contents
@@ -33,3 +34,9 @@ class TestContentsSerializer:
 
         assert card_contents == deserialized_card_contents
 
+    def test_deserialization(self):
+        data_path = os.path.join(os.path.dirname(__file__), "test_data", "card_data.json")
+        with open(data_path, 'r', encoding='utf-8', errors='ignore') as file:
+            json_data = json.load(file)
+            card_data = deserialize_card_contents(json_data)
+            assert  card_data.contents.count() > 0
