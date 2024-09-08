@@ -37,6 +37,18 @@ module "blob_storage" {
   container_name      = "shinyan-files"
 }
 
+# Call the Developers Group Module
+module "developers_group" {
+  source            = "./modules/developers-group"
+  group_name        = "developers"
+  resource_group_id = module.resource_group.resource_group_id
+  role_name         = "Contributor"
+
+  developer_upn_list = var.developer_upn_list  # Reads from tfvars
+}
+
+
+
 # module "function_app" {
 #   source                     = "./modules/function_app"
 #   resource_group_name        = module.resource_group.resource_group_name

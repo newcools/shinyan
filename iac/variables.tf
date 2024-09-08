@@ -21,3 +21,11 @@ variable "openai_api_key" {
   type        = string
   sensitive   = true
 }
+
+variable "developer_upn_list" {
+  description = "A map of user display names to their corresponding user object IDs."
+  type        = map(object({
+    object_id = string
+  }))
+  default = {}
+}

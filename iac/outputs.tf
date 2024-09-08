@@ -17,3 +17,7 @@ output "storage_account_id" {
 output "blob_container_id" {
   value = module.blob_storage.blob_container_id
 }
+
+output "developers_group_id" {
+  value = module.developers_group.developers_group_id
+}
