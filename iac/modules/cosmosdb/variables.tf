@@ -11,6 +11,7 @@ variable "resource_group_name" {
 variable "location" {
   description = "The Azure region where the Cosmos DB will be provisioned."
   type        = string
+  default     = "Australia East"
 }
 
 variable "database_name" {
@@ -25,5 +26,10 @@ variable "container_name" {
 
 variable "partition_key_path" {
   description = "The partition key path for the Cosmos DB container."
+  type        = string
+}
+
+variable "principal_id" {
+  description = "The ID of the Azure AD group or user to which Cosmos DB permissions will be assigned."
   type        = string
 }

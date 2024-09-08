@@ -37,6 +37,19 @@ module "blob_storage" {
   container_name      = "shinyan-files"
 }
 
+module "cosmosdb" {
+  source              = "./modules/cosmosdb"
+  cosmosdb_account_name = var.cosmosdb_account_name
+  resource_group_name = module.resource_group.resource_group_name
+  location            = var.location  # Default location: Australia East
+  database_name       = var.cosmosdb_database_name
+  container_name      = var.cosmosdb_container_name
+  partition_key_path  = var.partition_key_path
+
+  # Pass the principal ID of the Developers group to the Cosmos DB module for role assignment
+  principal_id = module.developers_group.developers_group_id
+}
+
 # Call the Developers Group Module
 module "developers_group" {
   source            = "./modules/developers-group"
