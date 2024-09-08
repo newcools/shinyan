@@ -25,7 +25,7 @@ module "app_configuration_key_vault" {
   app_configuration_id = module.app_configuration.app_configuration_id
   
   keys_map = {
-    "open_ai__api_key" = module.key_vault.openai_api_key_uri
+    "openai__api_key" = module.key_vault.openai_api_key_uri
   }
 }
 
