@@ -21,16 +21,10 @@ resource "azurerm_storage_container" "default" {
   container_access_type = "private"
 }
 
-# Define the card-files storage container
-resource "azurerm_storage_container" "card_files" {
-  name                  = "card-files"
-  storage_account_name  = azurerm_storage_account.this.name
-  container_access_type = "private"
-}
 
-# Assign the "Storage Blob Data Contributor" role to the current user for the storage account
-resource "azurerm_role_assignment" "current_user_blob_data_contributor" {
-  scope                = azurerm_storage_account.this.id
-  role_definition_name = "Storage Blob Data Contributor"
-  principal_id         = data.azurerm_client_config.current.object_id
-}
+# # Assign the "Storage Blob Data Contributor" role to the current user for the storage account
+# resource "azurerm_role_assignment" "current_user_blob_data_contributor" {
+#   scope                = azurerm_storage_account.this.id
+#   role_definition_name = "Storage Blob Data Contributor"
+#   principal_id         = data.azurerm_client_config.current.object_id
+# }

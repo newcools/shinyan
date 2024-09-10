@@ -6,6 +6,6 @@ output "key_vault_name" {
   value = azurerm_key_vault.this.name
 }
 
-output "openai_api_key_uri" {
-  value = azurerm_key_vault_secret.openai_api_key.id
+output "openai_api_key_reference" {
+  value = azurerm_key_vault_secret.openai_api_key.versionless_id
 }

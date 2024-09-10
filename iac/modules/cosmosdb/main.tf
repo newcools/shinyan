@@ -39,8 +39,8 @@ resource "azurerm_cosmosdb_sql_container" "container" {
 }
 
 # Assign the role to the Developers group for Cosmos DB
-resource "azurerm_role_assignment" "developers_cosmosdb_role_assignment" {
-  principal_id        = var.principal_id
-  role_definition_name = "Cosmos DB Built-in Data Contributor"
-  scope               = azurerm_cosmosdb_account.cosmosdb_serverless.id
-}
+# resource "azurerm_role_assignment" "developers_cosmosdb_role_assignment" {
+#   principal_id        = var.principal_id
+#   role_definition_name = "Cosmos DB Contributor"
+#   scope               = azurerm_cosmosdb_account.cosmosdb_serverless.id
+# }

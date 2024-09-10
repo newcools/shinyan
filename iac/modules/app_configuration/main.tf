@@ -5,7 +5,6 @@ resource "azurerm_app_configuration" "this" {
   resource_group_name = var.resource_group_name
   location            = var.location
   sku                 = "free"
-
   identity {
     type = "SystemAssigned"
   }

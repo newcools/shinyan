@@ -10,6 +10,10 @@ output "app_configuration_id" {
   value = module.app_configuration.app_configuration_id
 }
 
+output "app_configuration_identity" {
+  value = module.app_configuration.identity_principal_id
+}
+
 output "storage_account_id" {
   value = module.blob_storage.storage_account_id
 }

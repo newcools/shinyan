@@ -23,10 +23,15 @@ module "app_configuration" {
 module "app_configuration_key_vault" {
   source               = "./modules/app_configuration_key"
   app_configuration_id = module.app_configuration.app_configuration_id
+  key_vault_id         = module.key_vault.key_vault_id
+  app_configuration_identity = module.app_configuration.identity_principal_id
   
   keys_map = {
-    "openai__api_key" = module.key_vault.openai_api_key_uri
+    "openai__api_key" = module.key_vault.openai_api_key_reference
   }
+  depends_on = [
+    module.app_configuration.azurerm_role_assignment
+  ]
 }
 
 module "blob_storage" {
