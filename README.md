@@ -48,9 +48,9 @@ The key difference from Anki is that this app can be used without a screen. It p
 ## Code Structure
 This project is divided into three main parts:
 
-Front end: We use the Expo.dev framework to create the app, which can be built as both a web app and a mobile app.
-Back end: All card generation and related functionalities are handled using FastAPI, which can run as either a CLI tool or a backend service.
-Infrastructure as Code (IaC): We primarily use Azure and the Terraform code for managing infrastructure is included here.
+- Front end: We use the Expo.dev framework to create the app, which can be built as both a web app and a mobile app.
+- Back end: All card generation and related functionalities are handled using FastAPI, which can run as either a CLI tool or a backend service.
+- Infrastructure as Code (IaC): We primarily use Azure and the Terraform code for managing infrastructure is included here.
 
 ## near future plan 
 we plan to migrate to use the [open spaced repetition](https://github.com/open-spaced-repetition) library instead of the current implementation of [simple-spaced-repetition ](https://github.com/vlopezferrando/simple-spaced-repetition) that is what I originally forked from 
